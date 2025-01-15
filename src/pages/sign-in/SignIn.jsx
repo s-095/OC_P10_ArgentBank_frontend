@@ -4,6 +4,9 @@ import Footer from "../../components/footer/Footer";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { loginReducer } from "../../redux/loginSlice";
+import { logUser } from "../../redux/actions/loginAction";
 import "./sign-in.scss";
 
 function SignIn() {
@@ -11,31 +14,15 @@ function SignIn() {
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState(null);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-    async function logUser(user) {
-        const response = await fetch('http://localhost:3001/api/v1/user/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(user),
-        });
-
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.message || "Une erreur est survenue.");
-        }
-
-        const data = await response.json();
-        localStorage.setItem("authToken", data.body.token);
-        return data.body.token;
-    }
-
-    const handleSubmit = async (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
         const user = { email: username, password };
 
         try {
             const token = await logUser(user);
-            console.log("Connexion réussie, token :", token);
+            dispatch(loginReducer({ token: token }))
             navigate("/user");
         } catch (error) {
             console.error("Erreur d’authentification :", error.message);
@@ -50,7 +37,7 @@ function SignIn() {
                 <section className="sign-in-content">
                     <FontAwesomeIcon icon={faUserCircle} />
                     <h2>Sign In</h2>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleLogin}>
                         <div className="input-wrapper">
                             <label htmlFor="username">Username</label>
                             <input

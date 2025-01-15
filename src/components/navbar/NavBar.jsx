@@ -1,26 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logoutReducer } from "../../redux/loginSlice";
 import "./navbar.scss";
 import logo from "../../assets/img/argentBankLogo.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 function NavBar() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const token = useSelector((state) => state.login.token);
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const token = localStorage.getItem("authToken");
-        if (token) {
-            setIsLoggedIn(true);
-        } else {
-            setIsLoggedIn(false);
-        }
-    }, []);
-
     const handleLogout = () => {
-        localStorage.removeItem("authToken");
-        setIsLoggedIn(false);
+        dispatch(logoutReducer());
         navigate("/");
     };
 
@@ -30,7 +23,7 @@ function NavBar() {
                 <img className="main-nav-logo-image" src={logo} alt="Argent Bank Logo" />
             </Link>
             <h1 className="sr-only">Argent Bank</h1>
-            {isLoggedIn ? (
+            {token ? (
                 <div>
                     <Link to="/user" className="main-nav-item">
                         <FontAwesomeIcon icon={faUserCircle} />
@@ -48,7 +41,7 @@ function NavBar() {
                 </Link>
             )}
         </nav>
-    )
+    );
 };
 
 export default NavBar;
