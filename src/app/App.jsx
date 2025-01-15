@@ -1,10 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from "../pages/Home.jsx";
-import SignIn from "../pages/SignIn.jsx";
-import User from "../pages/User.jsx";
+import Home from "../pages/home/Home.jsx";
+import SignIn from "../pages/sign-in/SignIn.jsx";
+import User from "../pages/user/User.jsx";
 
 function App() {
   return (
+    
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -12,6 +13,7 @@ function App() {
         <Route path="/user" element={<User />} />
       </Routes>
     </Router>
+    
   );
 }
 
