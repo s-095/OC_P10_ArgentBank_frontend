@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { loginReducer } from "../../redux/loginSlice";
+import { loginReducer } from "../../redux/slices/loginSlice";
 import { logUser } from "../../redux/actions/loginAction";
 import "./sign-in.scss";
 

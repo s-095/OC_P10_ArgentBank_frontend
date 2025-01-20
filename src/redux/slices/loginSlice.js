@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const loginSlice = createSlice({
     name: "login",
-    initialState: { token: null },
+    initialState: { 
+    token: null },
     reducers: {
         loginReducer: (state, action) => {
             state.token = action.payload.token
