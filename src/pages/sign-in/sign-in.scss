@@ -1,9 +1,16 @@
+@import "../../base.scss";
+
+.sign-in {
+    display: flex;
+    flex-direction: column;
+}
+
 .main {
     flex: 1;
 }
 
 .bg-dark {
-    background-color: #12002b;
+    background-color: $dark-grey-bg-color;
 }
 
 .sr-only {
@@ -24,15 +31,9 @@
 }
 
 .sign-in-button {
-    display: block;
-    width: 100%;
-    padding: 8px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-top: 1rem;
-    border-color: #00bc77;
-    background-color: #00bc77;
-    color: #fff;
+    @include button-style;
+    background-color: $main-color;
+    margin-top: 21px;
 }
 
 .sign-in-content {
@@ -41,7 +42,14 @@
     width: 300px;
     margin: 0 auto;
     margin-top: 3rem;
+    margin-bottom: 3rem;
     padding: 2rem;
+    border-radius: 10px;
+
+    & svg {
+        height: 55px;
+        color: $main-color;
+    }
 }
 
 .sign-in-icon {
@@ -70,4 +78,15 @@
 .input-wrapper input {
     padding: 5px;
     font-size: 1.2rem;
+
+    &:focus {
+        outline-color: $main-color;
+    }
+}
+
+.error-message {
+    background-color: rgb(247, 230, 230);
+    color: rgb(148, 58, 58);
+    padding: 5px;
+    border-style: solid;
 }

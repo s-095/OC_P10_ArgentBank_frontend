@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserProfile, updateUserProfile } from "../../redux/actions/userAction";
-import { setUserProfile } from "../../redux/slices/userSlice";
+import { setUserProfile, updateUserName } from "../../redux/slices/userSlice";
 import NavBar from "../../components/navbar/NavBar";
 import Footer from "../../components/footer/Footer";
 import Accounts from "../../components/accounts/Accounts";
@@ -47,41 +47,42 @@ function User() {
     };
 
     return (
-        <div>
+        <div className="user">
             <NavBar />
-            <main className="main bg-dark">
+            <main className="main">
                 {isEditingUser ? (
                     <div className="header">
                         <h1>Edit user info</h1>
-                        <form
+                        <form className="edit-form"
                             onSubmit={(e) => {
                                 e.preventDefault();
                                 handleSave();
                             }}
                         >
                             <div>
-                                <label>Username: </label>
+                                <label>User name: </label>
                                 <input
                                     type="text"
                                     value={editedUserName || ""}
                                     onChange={(e) => setEditedUserName(e.target.value)}
                                 />
                             </div>
-                            <div>
-                                <label>First Name: </label>
+                            <div className="read-only">
+                                <label>First name: </label>
                                 <input type="text" value={user.firstName || ""} readOnly />
                             </div>
-                            <div>
-                                <label>Last Name: </label>
+                            <div className="read-only">
+                                <label>Last name: </label>
                                 <input type="text" value={user.lastName || ""} readOnly />
                             </div>
-
-                            <button type="submit" className="save-button">
-                                Save
-                            </button>
-                            <button type="button" className="cancel-button" onClick={handleCancel}>
-                                Cancel
-                            </button>
+                            <div className="buttons-form">
+                                <button type="submit" className="save-button">
+                                    Save
+                                </button>
+                                <button type="button" className="cancel-button" onClick={handleCancel}>
+                                    Cancel
+                                </button>
+                            </div>
                         </form>
                     </div>
                 ) : (

@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import "./accounts.scss"
 
 const Accounts = ({ title, amount, description }) => {
@@ -9,7 +11,9 @@ const Accounts = ({ title, amount, description }) => {
                 <p className="account-amount-description">{description}</p>
             </div>
             <div className="account-content-wrapper cta">
-                <button className="transaction-button">View transactions</button>
+                <button className="transaction-button">
+                    <FontAwesomeIcon icon={faChevronRight} />
+                </button>
             </div>
         </section>
     );

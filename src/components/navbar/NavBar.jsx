@@ -5,7 +5,7 @@ import { logoutReducer } from "../../redux/slices/loginSlice";
 import "./navbar.scss";
 import logo from "../../assets/img/argentBankLogo.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCircle, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle, faPowerOff } from '@fortawesome/free-solid-svg-icons';
 
 function NavBar() {
     const token = useSelector((state) => state.login.token);
@@ -25,13 +25,13 @@ function NavBar() {
             </Link>
             <h1 className="sr-only">Argent Bank</h1>
             {token ? (
-                <div>
+                <div className="login-nav">
                     <Link to="/user" className="main-nav-item">
                         <FontAwesomeIcon icon={faUserCircle} />
                         {username}
                     </Link>
                     <button className="main-nav-item" onClick={handleLogout}>
-                        <FontAwesomeIcon icon={faSignOutAlt} />
+                        <FontAwesomeIcon icon={faPowerOff} />
                         Sign Out
                     </button>
                 </div>

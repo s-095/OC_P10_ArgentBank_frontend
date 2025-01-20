@@ -1,0 +1,18 @@
+ @mixin button-style {
+     color: #fff;
+     font-weight: bold;
+     padding: 10px;
+     border-radius: 6px;
+     border: unset;
+     font-size: 18px;
+     width: 114px;
+     cursor: pointer;
+
+     &:hover {
+         opacity: 0.85;
+     }
+ }
+
+ $main-color : #61b37b;
+ $dark-grey-bg-color: #3d3d3d;
+ 

@@ -5,7 +5,7 @@ import Footer from "../../components/footer/Footer"
 import iconChat from "../../assets/img/icon-chat.png"
 import iconMoney from "../../assets/img/icon-money.png"
 import iconSecurity from "../../assets/img/icon-security.png"
-import "../main.scss"
+import "./home.scss"
 
 function Home() {
     return (
