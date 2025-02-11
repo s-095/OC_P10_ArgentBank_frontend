@@ -10,16 +10,14 @@ function App() {
   const token = useSelector((state) => state.login.token);
 
   return (
-    
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/user" element={token ? <User /> : <Navigate to="/sign-in" />} />
+        <Route path="/user" element={token ? <User /> : <Navigate to="/" />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </Router>
-    
   );
 }
 

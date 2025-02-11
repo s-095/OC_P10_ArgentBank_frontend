@@ -60,20 +60,27 @@ function User() {
                             }}
                         >
                             <div>
-                                <label>User name: </label>
+                                <label htmlFor="username">User name: </label>
                                 <input
                                     type="text"
+                                    id="username"
                                     value={editedUserName || ""}
                                     onChange={(e) => setEditedUserName(e.target.value)}
                                 />
                             </div>
                             <div className="read-only">
-                                <label>First name: </label>
-                                <input type="text" value={user.firstName || ""} readOnly />
+                                <label htmlFor="firstName">First name: </label>
+                                <input
+                                    type="text"
+                                    id="firstName"
+                                    value={user.firstName || ""} readOnly />
                             </div>
                             <div className="read-only">
-                                <label>Last name: </label>
-                                <input type="text" value={user.lastName || ""} readOnly />
+                                <label htmlFor="userName">Last name: </label>
+                                <input
+                                    type="text"
+                                    id="userName"
+                                    value={user.lastName || ""} readOnly />
                             </div>
                             <div className="buttons-form">
                                 <button type="submit" className="save-button">
